@@ -23,12 +23,14 @@
   }
 
   window.PixieLoader = {
-    loadStyles(list = [], base = config.base) {
-      list.forEach((file) => loadStyle(join(base, file)));
+    loadStyles(list, base = config.base) {
+      for (const file of list ?? []) {
+        loadStyle(join(base, file));
+      }
     },
 
-    async loadScripts(list = [], base = config.base) {
-      for (const file of list) {
+    async loadScripts(list, base = config.base) {
+      for (const file of list ?? []) {
         await loadScript(join(base, file));
       }
     }
